@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+        <RootNamespace>SampleApi</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\ScopeState.NetCoreDIExtensions\ScopeState.NetCoreDIExtensions.csproj" />
+      <ProjectReference Include="..\..\ScopeState.WebMiddleware\ScopeState.WebMiddleware.csproj" />
+      <ProjectReference Include="..\..\ScopeState\ScopeState.csproj" />
+    </ItemGroup>
+
+</Project>

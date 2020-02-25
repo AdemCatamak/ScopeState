@@ -1,0 +1,88 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScopeState", "ScopeState\ScopeState.csproj", "{6AD0FF30-2EA2-4AAE-B91F-5DED4CDD7805}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScopeState.NetCoreDIExtensions", "ScopeState.NetCoreDIExtensions\ScopeState.NetCoreDIExtensions.csproj", "{4250B264-A5F7-4BBD-A17E-FDD324266DED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{98E52B7A-DE4C-4FF1-953F-85C585AB2111}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScopeStateTests", "Tests\ScopeStateTests\ScopeStateTests.csproj", "{7F431B60-A6ED-4315-B09D-3C921F9F0D64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScopeState.NetCoreDIExtensionsTests", "Tests\ScopeState.NetCoreDIExtensionsTests\ScopeState.NetCoreDIExtensionsTests.csproj", "{663673C8-B25E-4ABC-A22C-74A66D4C950B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CICD", "CICD", "{6F143556-4C64-4540-9818-7FD0CAD2B4C5}"
+ProjectSection(SolutionItems) = preProject
+	.github\workflows\github.yml = .github\workflows\github.yml
+	.travis.yml = .travis.yml
+	appveyor.yml = appveyor.yml
+	bitbucket-pipelines.yml = bitbucket-pipelines.yml
+	build.cake = build.cake
+	build.config = build.config
+	build.ps1 = build.ps1
+	build.sh = build.sh
+EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFolder", "SolutionFolder", "{741A7EC6-4E7A-4A28-9ED4-23EA4B98BB48}"
+ProjectSection(SolutionItems) = preProject
+	NuGet.config = NuGet.config
+	.gitattributes = .gitattributes
+	.gitignore = .gitignore
+	ReadMe.md = ReadMe.md
+EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScopeState.WebMiddleware", "ScopeState.WebMiddleware\ScopeState.WebMiddleware.csproj", "{7D8DD9E1-2416-41FC-94EE-375972BAA201}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{2D43C33C-51E7-463C-A5E9-551C3598DAEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.WebMiddleware", "Sample\Sample.WebMiddleware\Sample.WebMiddleware.csproj", "{E76EF91F-F448-4B15-92E2-94D366B44036}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScopeState.MassTransitMiddleware", "ScopeState.MassTransitMiddleware\ScopeState.MassTransitMiddleware.csproj", "{67254E8C-1CD9-4936-8535-0AFAE9567D63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.MassTransitMiddleware", "Sample\Sample.MassTransitMiddleware\Sample.MassTransitMiddleware.csproj", "{5F6791B5-1665-4390-B85D-D2C1B43EA53A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6AD0FF30-2EA2-4AAE-B91F-5DED4CDD7805}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AD0FF30-2EA2-4AAE-B91F-5DED4CDD7805}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AD0FF30-2EA2-4AAE-B91F-5DED4CDD7805}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AD0FF30-2EA2-4AAE-B91F-5DED4CDD7805}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4250B264-A5F7-4BBD-A17E-FDD324266DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4250B264-A5F7-4BBD-A17E-FDD324266DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4250B264-A5F7-4BBD-A17E-FDD324266DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4250B264-A5F7-4BBD-A17E-FDD324266DED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F431B60-A6ED-4315-B09D-3C921F9F0D64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F431B60-A6ED-4315-B09D-3C921F9F0D64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F431B60-A6ED-4315-B09D-3C921F9F0D64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F431B60-A6ED-4315-B09D-3C921F9F0D64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{663673C8-B25E-4ABC-A22C-74A66D4C950B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{663673C8-B25E-4ABC-A22C-74A66D4C950B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{663673C8-B25E-4ABC-A22C-74A66D4C950B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{663673C8-B25E-4ABC-A22C-74A66D4C950B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D8DD9E1-2416-41FC-94EE-375972BAA201}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D8DD9E1-2416-41FC-94EE-375972BAA201}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D8DD9E1-2416-41FC-94EE-375972BAA201}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D8DD9E1-2416-41FC-94EE-375972BAA201}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E76EF91F-F448-4B15-92E2-94D366B44036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E76EF91F-F448-4B15-92E2-94D366B44036}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E76EF91F-F448-4B15-92E2-94D366B44036}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E76EF91F-F448-4B15-92E2-94D366B44036}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67254E8C-1CD9-4936-8535-0AFAE9567D63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67254E8C-1CD9-4936-8535-0AFAE9567D63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67254E8C-1CD9-4936-8535-0AFAE9567D63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67254E8C-1CD9-4936-8535-0AFAE9567D63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F6791B5-1665-4390-B85D-D2C1B43EA53A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F6791B5-1665-4390-B85D-D2C1B43EA53A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F6791B5-1665-4390-B85D-D2C1B43EA53A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F6791B5-1665-4390-B85D-D2C1B43EA53A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7F431B60-A6ED-4315-B09D-3C921F9F0D64} = {98E52B7A-DE4C-4FF1-953F-85C585AB2111}
+		{663673C8-B25E-4ABC-A22C-74A66D4C950B} = {98E52B7A-DE4C-4FF1-953F-85C585AB2111}
+		{E76EF91F-F448-4B15-92E2-94D366B44036} = {2D43C33C-51E7-463C-A5E9-551C3598DAEB}
+		{5F6791B5-1665-4390-B85D-D2C1B43EA53A} = {2D43C33C-51E7-463C-A5E9-551C3598DAEB}
+	EndGlobalSection
+EndGlobal

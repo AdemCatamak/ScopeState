@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <TargetFramework>netstandard1.7</TargetFramework>
+
+        <Authors>Adem Catamak</Authors>
+        <IsPackable>true</IsPackable>
+        <VersionPrefix>1.0.0</VersionPrefix>
+        <Description>Scope State</Description>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+</Project>
