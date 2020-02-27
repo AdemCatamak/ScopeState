@@ -30,10 +30,10 @@ namespace ScopeState.WebMiddleware
                                                                                Func<HttpContext, TScopeState> generateScopeState)
             where TScopeState : BaseScopeState
         {
-            app.Use(async (context, next) =>
+            app.Use(async (httpContext, next) =>
                     {
-                        IScopeStateAccessor<TScopeState> scopeStateAccessor = resolveScopeStateAccessor.Invoke(context.RequestServices);
-                        TScopeState scopeState = generateScopeState(context);
+                        IScopeStateAccessor<TScopeState> scopeStateAccessor = resolveScopeStateAccessor.Invoke(httpContext.RequestServices);
+                        TScopeState scopeState = generateScopeState(httpContext);
                         scopeStateAccessor.ScopeState = scopeState;
                         await next();
                     });

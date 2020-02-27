@@ -2,10 +2,20 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+
+        <VersionPrefix>1.0.1</VersionPrefix>
+
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+        <Authors>Adem Catamak</Authors>
+        <IsPackable>true</IsPackable>
+        <Description>Scope State</Description>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="MassTransit" Version="6.2.0" />
+      <PackageReference Include="MassTransit" Version="4.0.0" />
     </ItemGroup>
 
     <ItemGroup>

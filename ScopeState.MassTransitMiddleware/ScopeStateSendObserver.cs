@@ -5,7 +5,7 @@ using MassTransit;
 namespace ScopeState.MassTransitMiddleware
 {
     public class ScopeStateSendObserver<TScopeState> : ISendObserver
-        where TScopeState : BaseScopeState
+        where TScopeState : BaseScopeState, new()
     {
         private readonly IScopeStateAccessor<TScopeState> _scopeStateAccessor;
         private readonly Action<SendContext, TScopeState> _preSend;
@@ -22,7 +22,7 @@ namespace ScopeState.MassTransitMiddleware
             {
                 if (!context.Headers.TryGetHeader("x-trace-id", out object _))
                 {
-                    string traceId = _scopeStateAccessor.ScopeState.TraceId;
+                    string traceId = _scopeStateAccessor.ScopeState?.TraceId ?? new TScopeState().TraceId;
                     context.Headers.Set("x-trace-id", traceId);
                 }
 
