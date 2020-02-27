@@ -6,17 +6,19 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Primitives;
+using ScopeState.Imp;
 using ScopeState.NetCoreDIExtensions;
 using ScopeState.WebMiddleware;
 using Xunit;
 
 namespace ScopeState.WebMiddlewareIntegrationTests
 {
-    public class DefaultScopeStateMiddlewareTestServer : IDisposable
+    public class ScopeStateMiddlewareWithFunctionTestServer : IDisposable
     {
         public TestServer TestServer { get; }
 
-        public DefaultScopeStateMiddlewareTestServer()
+        public ScopeStateMiddlewareWithFunctionTestServer()
         {
             TestServer = new TestServer(new WebHostBuilder()
                                        .ConfigureServices(services =>
@@ -26,7 +28,17 @@ namespace ScopeState.WebMiddlewareIntegrationTests
                                                           })
                                        .Configure(builder =>
                                                   {
-                                                      builder.UseScopeStateMiddleware();
+                                                      builder.UseScopeStateMiddleware(provider => provider.GetRequiredService<IScopeStateAccessor<BasicScopeState>>(),
+                                                                                      httpContext =>
+                                                                                      {
+                                                                                          var basicScopeState = new BasicScopeState();
+                                                                                          if (httpContext.Request.Headers.TryGetValue("x-custom-trace-id", out StringValues traceId))
+                                                                                          {
+                                                                                              basicScopeState.TraceId = traceId;
+                                                                                          }
+
+                                                                                          return basicScopeState;
+                                                                                      });
                                                       builder.UseMvc();
                                                   })
                                        );
@@ -38,15 +50,16 @@ namespace ScopeState.WebMiddlewareIntegrationTests
         }
     }
 
-    public class UseScopeStateMiddlewareParameterlessTests : IClassFixture<DefaultScopeStateMiddlewareTestServer>
+
+    public class UseScopeStateMiddlewareCreateStateTests : IClassFixture<ScopeStateMiddlewareWithFunctionTestServer>
     {
         private readonly TestServer _server;
 
-        public UseScopeStateMiddlewareParameterlessTests(DefaultScopeStateMiddlewareTestServer defaultScopeStateMiddlewareTestServer)
+        public UseScopeStateMiddlewareCreateStateTests(ScopeStateMiddlewareWithFunctionTestServer scopeStateMiddlewareWithFunctionTestServer)
         {
-            _server = defaultScopeStateMiddlewareTestServer.TestServer;
+            _server = scopeStateMiddlewareWithFunctionTestServer.TestServer;
         }
-
+        
         [Fact]
         public async Task WhenRequestDoesNotContainsHeaders__ScopeStateGenerateOwnTraceId()
         {
@@ -62,7 +75,7 @@ namespace ScopeState.WebMiddlewareIntegrationTests
         {
             using HttpClient httpClient = _server.CreateClient();
             using var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, "default-scope-state-accessor/trace-id");
-            httpRequestMessage.Headers.Add("x-trace-id", "42");
+            httpRequestMessage.Headers.Add("x-custom-trace-id", "42");
 
             using HttpResponseMessage httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
             string content = await httpResponseMessage.Content.ReadAsStringAsync();

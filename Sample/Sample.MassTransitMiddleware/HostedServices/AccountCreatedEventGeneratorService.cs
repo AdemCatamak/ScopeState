@@ -25,7 +25,7 @@ namespace Sample.MassTransitMiddleware.HostedServices
             return Task.CompletedTask;
         }
 
-        private void DoWork(object? state)
+        private void DoWork(object state)
         {
             var accountCreatedEvent1 = new AccountCreatedEvent()
                                        {

@@ -2,6 +2,14 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+        <Authors>Adem Catamak</Authors>
+        <IsPackable>true</IsPackable>
+        <VersionPrefix>1.0.0</VersionPrefix>
+        <Description>Scope State</Description>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>

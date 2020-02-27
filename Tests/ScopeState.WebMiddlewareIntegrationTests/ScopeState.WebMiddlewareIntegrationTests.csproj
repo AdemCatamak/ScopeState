@@ -2,8 +2,9 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp2.2</TargetFramework>
-
         <IsPackable>false</IsPackable>
+
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -17,8 +18,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\ScopeState.NetCoreDIExtensions\ScopeState.NetCoreDIExtensions.csproj" />
-      <ProjectReference Include="..\..\ScopeState.WebMiddleware\ScopeState.WebMiddleware.csproj" />
+        <ProjectReference Include="..\..\ScopeState.NetCoreDIExtensions\ScopeState.NetCoreDIExtensions.csproj" />
+        <ProjectReference Include="..\..\ScopeState.WebMiddleware\ScopeState.WebMiddleware.csproj" />
     </ItemGroup>
 
 </Project>
