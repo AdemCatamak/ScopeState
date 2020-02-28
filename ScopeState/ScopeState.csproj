@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard1.7</TargetFramework>
 
-        <VersionPrefix>1.0.2</VersionPrefix>
+        <VersionPrefix>1.0.2.1</VersionPrefix>
 
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -12,6 +12,7 @@
         <IsPackable>true</IsPackable>
         <Description>Scope State</Description>
         <LangVersion>latest</LangVersion>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     </PropertyGroup>
 
 </Project>
