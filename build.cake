@@ -73,8 +73,14 @@ Task(CheckEnvVariableStage)
   Console.WriteLine($"CI Platform = {CIPlatform}");
 
   if(!string.IsNullOrEmpty(SelectedEnvironment) && CIPlatform == MasterCIPlatform)
-    if(string.IsNullOrEmpty(NugetServer) || string.IsNullOrEmpty(NugetApiKey))
-      throw new Exception("When selected environment is not empty, you should supply nuget server and nuget api key");
+  {
+      if(string.IsNullOrEmpty(NugetServer) || string.IsNullOrEmpty(NugetApiKey))
+      {
+        throw new Exception("When selected environment is not empty, you should supply nuget server and nuget api key");
+      }
+      
+      Console.WriteLine($"NugetServer = {NugetServer}");
+  }
 });
 
 Task(RemoveDirectoriesStage)
