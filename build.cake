@@ -78,9 +78,9 @@ Task(CheckEnvVariableStage)
       {
         throw new Exception("When selected environment is not empty, you should supply nuget server and nuget api key");
       }
-      
-      Console.WriteLine($"NugetServer = {NugetServer}");
   }
+  
+  Console.WriteLine($"NugetServer = {NugetServer}");
 });
 
 Task(RemoveDirectoriesStage)
