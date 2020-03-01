@@ -1,13 +1,14 @@
 using Microsoft.Extensions.DependencyInjection;
+using NUnit.Framework;
+using ScopeState;
 using ScopeState.Imp;
 using ScopeState.NetCoreDIExtensions;
-using Xunit;
 
-namespace ScopeState.NetCoreDIExtensionsTests
+namespace IntegrationTest.ScopeState.NetCoreDIExtensions
 {
     public class ScopeStateDIExtensionsTests
     {
-        [Fact]
+        [Test]
         public void WhenBasicInjectionApplied__ServiceProviderShouldReturnBasicScopeStateAccessor()
         {
             IServiceCollection serviceCollection = new ServiceCollection();
@@ -21,7 +22,7 @@ namespace ScopeState.NetCoreDIExtensionsTests
             Assert.NotNull(basicScopeStateAccessor);
         }
 
-        [Fact]
+        [Test]
         public void WhenAccessorInjectWithoutAs__ServiceProviderShouldReturnSelfAndInterface()
         {
             IServiceCollection serviceCollection = new ServiceCollection();
