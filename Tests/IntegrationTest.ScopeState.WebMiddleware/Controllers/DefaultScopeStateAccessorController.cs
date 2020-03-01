@@ -1,8 +1,9 @@
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
+using ScopeState;
 using ScopeState.Imp;
 
-namespace ScopeState.WebMiddlewareIntegrationTests.Controllers
+namespace IntegrationTest.ScopeState.WebMiddleware.Controllers
 {
     [Route("default-scope-state-accessor")]
     public class DefaultScopeStateAccessorController : ControllerBase
