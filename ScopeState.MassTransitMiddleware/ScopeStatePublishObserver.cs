@@ -22,7 +22,8 @@ namespace ScopeState.MassTransitMiddleware
             {
                 if (context.Headers != null && !context.Headers.TryGetHeader("x-trace-id", out object _))
                 {
-                    string traceId = _scopeStateAccessor.ScopeState?.TraceId ?? new TScopeState().TraceId;
+                    string traceId = _scopeStateAccessor.ScopeState?.TraceId ??
+                                     $"{DateTime.UtcNow:yyyy-MM-dd-HH-mm-ss}--{context.MessageId?.ToString() ?? Guid.NewGuid().ToString()}";
                     context.Headers?.Set("x-trace-id", traceId);
                 }
 

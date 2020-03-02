@@ -47,7 +47,7 @@ namespace Sample.MassTransitMiddleware
             serviceCollection.AddHostedService<BusHostedService>();
             serviceCollection.AddHostedService<AccountCreatedEventGeneratorService>();
 
-            serviceCollection.AddScopeStateAccessor<CultureScopeStateAccessor, CultureScopeState>();
+            serviceCollection.AddScopeStateAccessor<AppScopeStateAccessor, AppScopeState>();
 
             serviceCollection.AddMassTransit(cfg =>
                                              {
@@ -66,36 +66,27 @@ namespace Sample.MassTransitMiddleware
                                                                 busControl.ConnectSendObserver(new BasicSendObserver(provider.GetService<ILogger<BasicSendObserver>>()));
                                                                 busControl.ConnectConsumeObserver(new BasicConsumeObserver(provider.GetService<ILogger<BasicConsumeObserver>>()));
 
-                                                                busControl.UseScopeStatePublishPipeline(provider.GetService<IScopeStateAccessor<CultureScopeState>>(),
-                                                                                                        (context, state) =>
-                                                                                                        {
-                                                                                                            if (context.Headers == null) return;
+                                                                static void PreSend(SendContext context, AppScopeState scopeState)
+                                                                {
+                                                                    if (context.Headers == null) return;
 
-                                                                                                            string cultureName = state?.Culture?.Name;
-                                                                                                            if (!string.IsNullOrEmpty(cultureName) && !context.Headers.TryGetHeader("x-culture-name", out object _))
-                                                                                                                context.Headers.Set("x-culture-name", cultureName);
+                                                                    string cultureName = scopeState?.Culture?.Name;
+                                                                    if (!string.IsNullOrEmpty(cultureName) && !context.Headers.TryGetHeader("x-culture-name", out object _))
+                                                                        context.Headers.Set("x-culture-name", cultureName);
 
-                                                                                                            string traceId = state?.TraceId;
-                                                                                                            if (!string.IsNullOrEmpty(traceId) && !context.Headers.TryGetHeader("x-trace-id", out object _))
-                                                                                                                context.Headers.Set("x-trace-id", traceId);
-                                                                                                        });
-                                                                busControl.UseScopeStateSendPipeline(provider.GetService<IScopeStateAccessor<CultureScopeState>>(),
-                                                                                                     (context, state) =>
-                                                                                                     {
-                                                                                                         if (context.Headers == null) return;
+                                                                    string traceId = scopeState?.TraceId;
+                                                                    if (!string.IsNullOrEmpty(traceId) && !context.Headers.TryGetHeader("x-trace-id", out object _))
+                                                                        context.Headers.Set("x-trace-id", traceId);
+                                                                }
 
-                                                                                                         string cultureName = state?.Culture?.Name;
-                                                                                                         if (!string.IsNullOrEmpty(cultureName) && !context.Headers.TryGetHeader("x-culture-name", out object _))
-                                                                                                             context.Headers.Set("x-culture-name", cultureName);
-
-                                                                                                         string traceId = state?.TraceId;
-                                                                                                         if (!string.IsNullOrEmpty(traceId) && !context.Headers.TryGetHeader("x-trace-id", out object _))
-                                                                                                             context.Headers.Set("x-trace-id", traceId);
-                                                                                                     });
-                                                                busControl.UseScopeStateConsumePipeline(provider.GetService<IScopeStateAccessor<CultureScopeState>>(),
+                                                                busControl.UseScopeStatePublishPipeline(provider.GetService<IScopeStateAccessor<AppScopeState>>(),
+                                                                                                        PreSend);
+                                                                busControl.UseScopeStateSendPipeline(provider.GetService<IScopeStateAccessor<AppScopeState>>(),
+                                                                                                     PreSend);
+                                                                busControl.UseScopeStateConsumePipeline(provider.GetService<IScopeStateAccessor<AppScopeState>>(),
                                                                                                         context =>
                                                                                                         {
-                                                                                                            var cultureScopeState = new CultureScopeState();
+                                                                                                            var cultureScopeState = new AppScopeState();
                                                                                                             if (context.Headers == null) return cultureScopeState;
 
                                                                                                             CultureInfo cultureInfo = CultureInfo.InvariantCulture;
