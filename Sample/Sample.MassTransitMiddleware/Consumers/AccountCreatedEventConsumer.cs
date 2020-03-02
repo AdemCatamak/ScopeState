@@ -8,9 +8,9 @@ namespace Sample.MassTransitMiddleware.Consumers
 {
     public class AccountCreatedEventConsumer : IConsumer<AccountCreatedEvent>
     {
-        private readonly IScopeStateAccessor<CultureScopeState> _scopeStateAccessor;
+        private readonly IScopeStateAccessor<AppScopeState> _scopeStateAccessor;
 
-        public AccountCreatedEventConsumer(IScopeStateAccessor<CultureScopeState> scopeStateAccessor)
+        public AccountCreatedEventConsumer(IScopeStateAccessor<AppScopeState> scopeStateAccessor)
         {
             _scopeStateAccessor = scopeStateAccessor;
         }

@@ -27,7 +27,7 @@ namespace Sample.MassTransitMiddleware.HostedServices
 
         private void DoWork(object state)
         {
-            var accountCreatedEvent1 = new AccountCreatedEvent()
+            var accountCreatedEvent1 = new AccountCreatedEvent
                                        {
                                            AccountName = Guid.NewGuid().ToString()
                                        };
@@ -35,7 +35,7 @@ namespace Sample.MassTransitMiddleware.HostedServices
             _busControl.Publish(accountCreatedEvent1, context => context.Headers.Set("x-trace-id", accountCreatedEvent1.AccountName))
                        .GetAwaiter().GetResult();
 
-            var accountCreatedEvent2 = new AccountCreatedEvent()
+            var accountCreatedEvent2 = new AccountCreatedEvent
                                        {
                                            AccountName = Guid.NewGuid().ToString()
                                        };

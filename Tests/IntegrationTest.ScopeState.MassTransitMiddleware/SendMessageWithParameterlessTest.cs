@@ -67,7 +67,7 @@ namespace IntegrationTest.ScopeState.MassTransitMiddleware
         {
             const string id = nameof(WhenSendMessageExecuted_TraceIdAccessorHasScopeState__TraceIdIsAdded);
 
-            _basicScopeStateAccessor.ScopeState = new BasicScopeState()
+            _basicScopeStateAccessor.ScopeState = new BasicScopeState
                                                   {
                                                       TraceId = "42"
                                                   };

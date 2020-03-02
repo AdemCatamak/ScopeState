@@ -80,7 +80,7 @@ namespace IntegrationTest.ScopeState.MassTransitMiddleware
             await _testHarness.Start();
             _testHarness.Bus.UseScopeStateConsumePipeline(_basicScopeStateAccessor);
 
-            var someEvent = new SomeEvent()
+            var someEvent = new SomeEvent
                             {
                                 Id = id
                             };

@@ -14,7 +14,10 @@ namespace ScopeState.WebMiddleware
             app.UseScopeStateMiddleware(provider => provider.GetRequiredService<IScopeStateAccessor<BasicScopeState>>(),
                                         httpContext =>
                                         {
-                                            var basicScopeState = new BasicScopeState();
+                                            var basicScopeState = new BasicScopeState
+                                                                  {
+                                                                      TraceId = $"{DateTime.UtcNow:yyyy-MM-dd-HH-mm-ss}--{httpContext.Connection?.Id ?? Guid.NewGuid().ToString()}"
+                                                                  };
                                             if (httpContext.Request.Headers.TryGetValue("x-trace-id", out StringValues traceId))
                                             {
                                                 basicScopeState.TraceId = traceId;

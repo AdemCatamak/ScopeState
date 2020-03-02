@@ -3,7 +3,7 @@ using ScopeState;
 
 namespace SampleApi.AppScopeStates
 {
-    public class CultureScopeState : BaseScopeState
+    public class AppScopeState : BaseScopeState
     {
         public CultureInfo Culture { get; set; }
     }

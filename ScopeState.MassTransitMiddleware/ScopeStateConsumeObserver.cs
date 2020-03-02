@@ -17,7 +17,10 @@ namespace ScopeState.MassTransitMiddleware
 
         public Task PreConsume<T>(ConsumeContext<T> context) where T : class
         {
-            var scopeState = new TScopeState();
+            var scopeState = new TScopeState
+                             {
+                                 TraceId = $"{DateTime.UtcNow:yyyy-MM-dd-HH-mm-ss}--{context.MessageId?.ToString() ?? Guid.NewGuid().ToString()}"
+                             };
             if (_generateScopeState == null)
             {
                 if (context.Headers != null && context.Headers.TryGetHeader("x-trace-id", out object traceIdObj))

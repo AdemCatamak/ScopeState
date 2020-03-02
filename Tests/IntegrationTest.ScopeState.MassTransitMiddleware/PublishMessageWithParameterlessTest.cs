@@ -87,7 +87,7 @@ namespace IntegrationTest.ScopeState.MassTransitMiddleware
         {
             const string someEventId = nameof(WhenPublishMessageExecuted_IfTraceIdExist__ItDoesNotReplaced);
 
-            _basicScopeStateAccessor.ScopeState = new BasicScopeState()
+            _basicScopeStateAccessor.ScopeState = new BasicScopeState
                                                   {
                                                       TraceId = "some-random-trace-id"
                                                   };

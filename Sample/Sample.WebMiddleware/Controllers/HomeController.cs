@@ -9,10 +9,10 @@ namespace SampleApi.Controllers
     [Route("")]
     public class HomeController : ControllerBase
     {
-        private readonly IScopeStateAccessor<CultureScopeState> _appScopeStateAccessor;
+        private readonly IScopeStateAccessor<AppScopeState> _appScopeStateAccessor;
         private readonly IScopeStateAccessor<BasicScopeState> _basicScopeStateAccessor;
 
-        public HomeController(IScopeStateAccessor<CultureScopeState> appScopeStateAccessor, IScopeStateAccessor<BasicScopeState> basicScopeStateAccessor)
+        public HomeController(IScopeStateAccessor<AppScopeState> appScopeStateAccessor, IScopeStateAccessor<BasicScopeState> basicScopeStateAccessor)
         {
             _appScopeStateAccessor = appScopeStateAccessor;
             _basicScopeStateAccessor = basicScopeStateAccessor;

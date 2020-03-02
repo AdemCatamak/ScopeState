@@ -27,7 +27,7 @@ namespace SampleApi
         {
             services.AddControllers();
             services.AddScopeStateAccessor();
-            services.AddScopeStateAccessor<CultureScopeStateAccessor, CultureScopeState>();
+            services.AddScopeStateAccessor<AppScopeStateAccessor, AppScopeState>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,9 +40,11 @@ namespace SampleApi
 
             app.UseScopeStateMiddleware();
 
-            app.UseScopeStateMiddleware<CultureScopeState>(provider => provider.GetService<IScopeStateAccessor<CultureScopeState>>(),
+            app.UseScopeStateMiddleware<AppScopeState>(provider => provider.GetService<IScopeStateAccessor<AppScopeState>>(),
                                                            httpContext =>
                                                            {
+                                                               AppScopeState appScopeState = new AppScopeState();
+                                                               
                                                                CultureInfo cultureInfo = CultureInfo.InvariantCulture;
                                                                if (!httpContext.Request.Headers.TryGetValue("Accept-Language", out StringValues languageName))
                                                                {
@@ -56,11 +58,14 @@ namespace SampleApi
                                                                    }
                                                                }
 
+                                                               appScopeState.Culture = cultureInfo;
+                                                               
+                                                               if (httpContext.Request.Headers.TryGetValue("x-trace-id", out StringValues traceId))
+                                                               {
+                                                                   appScopeState.TraceId = traceId;
+                                                               }
 
-                                                               return new CultureScopeState
-                                                                      {
-                                                                          Culture = cultureInfo
-                                                                      };
+                                                               return appScopeState;
                                                            });
 
 
