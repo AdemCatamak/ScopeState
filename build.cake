@@ -19,8 +19,8 @@ var ProjectsToBePacked  = new Project[]
 };
 
 var TestProjectPatterns = new string[]{
-  "./**/*Test.csproj",
-  "./**/*Tests.csproj",
+  "./**/IntegrationTest*.csproj",
+  "./**/UnitTest*.csproj",
 };
 
 var BuildConfig = "Release";
