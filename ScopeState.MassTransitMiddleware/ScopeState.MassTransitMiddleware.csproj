@@ -10,7 +10,7 @@
 
         <Authors>Adem Catamak</Authors>
         <IsPackable>true</IsPackable>
-        <Description>Scope State</Description>
+        <Description>Scope-State MassTransit-Middleware</Description>
         <LangVersion>latest</LangVersion>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     </PropertyGroup>

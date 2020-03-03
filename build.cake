@@ -16,6 +16,7 @@ var ProjectsToBePacked  = new Project[]
   new Project("ScopeState.NetCoreDIExtensions"),
   new Project("ScopeState.MassTransitMiddleware"),
   new Project("ScopeState.WebMiddleware"),
+  new Project("ScopeState.HttpClientInterceptor"),
 };
 
 var TestProjectPatterns = new string[]{
