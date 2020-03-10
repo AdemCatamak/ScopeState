@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard1.7</TargetFramework>
+        <TargetFramework>netstandard1.3</TargetFramework>
 
-        <VersionPrefix>1.0.2.1</VersionPrefix>
+        <VersionPrefix>1.0.2.2</VersionPrefix>
 
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
